@@ -19,19 +19,19 @@ class TreatmentsRelationManager extends RelationManager
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-                Forms\Components\TextInput::make('description')
-                    ->required()
-                    ->maxLength(255)
-                    ->columnSpan('full'),
-                Forms\Components\Textarea::make('notes')
+        ->schema([
+            Forms\Components\TextInput::make('description')
+                ->required()
+                ->maxLength(255)
+                ->columnSpan('full'),
+            Forms\Components\Textarea::make('notes')
                 ->maxLength(65535)
                 ->columnSpan('full'),
-                Forms\Components\TextInput::make('price')
+            Forms\Components\TextInput::make('price')
                 ->numeric()
-                ->prefix('Tsh')
+                ->prefix('$')
                 ->maxValue(42949672.95),
-            ]);
+        ]);
     }
 
     public static function table(Table $table): Table
@@ -40,8 +40,8 @@ class TreatmentsRelationManager extends RelationManager
             ->columns([
                 Tables\Columns\TextColumn::make('description'),
                 Tables\Columns\TextColumn::make('price')
-                ->money('Tsh')
-                ->sortable(),
+                    ->money('USD')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                 ->dateTime(),
             ])

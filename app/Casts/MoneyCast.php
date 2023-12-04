@@ -7,11 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class MoneyCast implements CastsAttributes
 {
-    /**
-     * Cast the given value.
-     *
-     * @param  array<string, mixed>  $attributes
-     */
     public function get($model, string $key, $value, array $attributes): float
     {
         // Transform the integer stored in the database into a float.
